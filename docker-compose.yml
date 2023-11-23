@@ -4,12 +4,12 @@ services:
   app:
     container_name: harry-potter-microfrontend-container
     image: harry-potter-microfrontend-container
-    # environment:
-    # - REACT_APP_API_KEY=${REACT_APP_API_KEY}
+    environment:
+      - REACT_APP_API_KEY=${REACT_APP_API_KEY}
     build:
       context: .
       target: development
     volumes:
       - ./src:/app/src
     ports:
-      - 3000:3000
+      - 3006:3006
