@@ -1,5 +1,7 @@
 export interface CharacterServiceInterface {
-  getAllCharacters: () => Promise<CharactersResponse | string>
+  getAllCharacters: (
+    paginateOptions: PaginateOptions,
+  ) => Promise<CharactersResponse | string>
   getCharacterById: (
     characterId: string,
   ) => Promise<CharactersResponse> | string
@@ -7,6 +9,7 @@ export interface CharacterServiceInterface {
 
 export type CharactersResponse = {
   results: Characters[]
+  paginate?: Paginate
 }
 
 export type Characters = {
@@ -17,6 +20,18 @@ export type Characters = {
   house: string
   image: string
   alive: boolean
+}
+
+export type Paginate = {
+  total: number
+  totalPages: number
+  page: number
+  pageSize: number
+}
+
+export type PaginateOptions = {
+  page: number
+  pageSize: number
 }
 
 export type ApiResponse = Characters[]
