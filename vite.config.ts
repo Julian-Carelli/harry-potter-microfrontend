@@ -2,27 +2,29 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import federation from '@originjs/vite-plugin-federation'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "harry-potter-microfrontend",
-      filename: "remoteEntry.js",
+      name: 'harry-potter-microfrontend',
+      filename: 'remoteEntry.js',
       exposes: {
-        "./Data2": "./src/Data2.tsx"
+        './characterGallery':
+          './src/components/characterGallery/characterGallery.tsx',
+        './characterDetails':
+          './src/components/characterDetails/characterDetails.tsx',
       },
-      shared: ["react", "react-dom", "styled-components"]
-    })
+      shared: ['react', 'react-dom', 'react-router-dom', 'styled-components'],
+    }),
   ],
   server: {
-    port: 3006
+    port: 3006,
   },
   build: {
     modulePreload: false,
-    target: "esnext",
+    target: 'esnext',
     minify: false,
     cssCodeSplit: false,
-    outDir: "build",
-  }
+    outDir: 'build',
+  },
 })
