@@ -19,7 +19,7 @@ export type Characters = {
   gender: string
   house: string
   image: string
-  alive: boolean
+  alive: string
 }
 
 export type Paginate = {

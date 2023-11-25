@@ -1,4 +1,5 @@
 import { validateImage } from '../../commons/validation'
+import env from '../../env/env'
 import {
   ApiResponse,
   CharacterServiceInterface,
@@ -9,7 +10,7 @@ import {
 class CharactersService implements CharacterServiceInterface {
   public async getAllCharacters(paginateOptions: PaginateOptions) {
     try {
-      const response = await fetch(`https://hp-api.onrender.com/api/characters`)
+      const response = await fetch(`${env.REACT_APP_HARRY_POTTER}characters`)
       const data = await response.json()
       return buildResponse(data, paginateOptions)
     } catch (error) {
@@ -21,7 +22,7 @@ class CharactersService implements CharacterServiceInterface {
   public async getCharacterById(characterId: string) {
     try {
       const response = await fetch(
-        `https://hp-api.onrender.com/api/character/${characterId}`,
+        `${env.REACT_APP_HARRY_POTTER}character/${characterId}`,
       )
       const data = await response.json()
       return buildResponse(data)
@@ -82,7 +83,7 @@ const mapToCharacter = (character: Characters) => {
     species: character.species,
     gender: character.gender,
     house: character.house,
-    alive: character.alive,
+    alive: character.alive ? 'Alive' : 'Dead',
   }
 }
 

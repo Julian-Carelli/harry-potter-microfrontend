@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import { CharactersResponse } from '../../service/characters/characters-interface'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import CharactersService from '../../service/characters/characters'
+import { StyledCharacterDetail } from './CharacterDetails.styles'
 
 const charactersService = new CharactersService()
 
@@ -32,17 +33,19 @@ const CharacterDetails = () => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' }}>
+    <StyledCharacterDetail>
+      <div className="back-to-home">
+        <Link to="/">
+          <button>Back to Home</button>
+        </Link>
+      </div>
       {character.results.map((item) => (
-        <div key={item.id}>
-          <h1 style={{ textAlign: 'center' }}>{item.name}</h1>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <img
-              src={item.image}
-              style={{ width: 300, height: 300, objectFit: 'fill' }}
-            />
+        <div key={item.id} className="character-info">
+          <h1>{item.name}</h1>
+          <div>
+            <img src={item.image} />
           </div>
-          <div style={{ textAlign: 'center' }}>
+          <div>
             <p>Species: {item.species}</p>
             <p>Gender: {item.gender}</p>
             <p>House: {item.house}</p>
@@ -50,7 +53,7 @@ const CharacterDetails = () => {
           </div>
         </div>
       ))}
-    </div>
+    </StyledCharacterDetail>
   )
 }
 
