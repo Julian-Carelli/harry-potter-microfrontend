@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
+import '../i18n.js'
+
 import CharacterGallery from './components/CharacterGallery/CharacterGallery'
 import CharacterDetails from './components/CharacterDetails/CharacterDetails'
 

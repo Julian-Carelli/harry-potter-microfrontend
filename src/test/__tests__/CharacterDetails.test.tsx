@@ -26,10 +26,10 @@ test('render component', async () => {
 
   await waitFor(() => {
     const characterNameElement = screen.getByText('Harry Potter')
-    const characterSpeciesElement = screen.getByText('Human')
-    const characterGenderElement = screen.getByText('Male')
+    const characterSpeciesElement = screen.getByText('Humano')
+    const characterGenderElement = screen.getByText('Masculino')
     const characterHouseElement = screen.getByText('Gryffindor')
-    const characterAliveElement = screen.getByText('Dead')
+    const characterAliveElement = screen.getByText('Muerto')
 
     expect(characterNameElement).toBeTruthy()
     expect(characterSpeciesElement).toBeTruthy()

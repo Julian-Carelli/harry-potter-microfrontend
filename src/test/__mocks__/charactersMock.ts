@@ -3,8 +3,8 @@ export const getCharacterMockResponse = {
   name: 'Harry Potter',
   image:
     'https://cdn4.iconfinder.com/data/icons/political-elections/50/48-512.png',
-  species: 'Human',
-  gender: 'Male',
+  species: 'human',
+  gender: 'male',
   house: 'Gryffindor',
   alive: false,
 }

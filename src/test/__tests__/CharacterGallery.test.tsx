@@ -20,7 +20,7 @@ test('render component', async () => {
   })
 
   await waitFor(() => {
-    const CharacterGalleryTitle = screen.getByText('Harry Potter Characters')
+    const CharacterGalleryTitle = screen.getByText('Personajes de Harry Potter')
     const characterNameElement = screen.getByText('Harry Potter')
     const characterName2Element = screen.getByText('Hermione Granger')
     const characterName3Element = screen.getByText('Ron Weasley')
