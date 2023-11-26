@@ -28,7 +28,11 @@ export default ({ mode }: { mode: string }) => {
       }),
     ],
     server: {
+      host: true,
       port: 3006,
+      watch: {
+        usePolling: true,
+      },
     },
     build: {
       modulePreload: false,

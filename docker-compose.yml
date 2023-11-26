@@ -1,15 +1,13 @@
 version: '3.8'
 
 services:
-  app:
+  vite_docker:
     container_name: harry-potter-microfrontend-container
-    image: harry-potter-microfrontend-container
-    environment:
-      - REACT_APP_API_KEY=${REACT_APP_API_KEY}
-    build:
-      context: .
-      target: development
+    entrypoint: /bin/sh
+    image: node:alpine
     volumes:
-      - ./src:/app/src
+      - .:/app
+    tty: true
     ports:
       - 3006:3006
+    working_dir: /app

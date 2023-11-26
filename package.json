@@ -9,8 +9,8 @@
     "format": "prettier --write .",
     "preview": "vite preview",
     "test": "jest",
-    "docker:create": "docker-compose -f docker-compose.yml up",
-    "docker:rebuild": "docker-compose up --build"
+    "docker:create": "docker-compose up -d",
+    "docker:rebuild": "docker-compose up --build --no-recreate -d"
   },
   "dependencies": {
     "i18next": "^23.7.6",
