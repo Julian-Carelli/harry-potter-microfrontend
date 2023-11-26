@@ -7,13 +7,13 @@ export const StyledCharacterDetail = styled.div`
   align-items: center;
 
   .back-to-home {
-    margin-bottom: 16px;
-
+    margin-top: 16px;
     a {
       text-decoration: none;
 
       button {
         background: #653780;
+        color: white;
         cursor: pointer;
       }
     }
@@ -38,4 +38,10 @@ export const StyledCharacterDetail = styled.div`
       text-align: center;
     }
   }
+`
+
+export const StyledContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
 `

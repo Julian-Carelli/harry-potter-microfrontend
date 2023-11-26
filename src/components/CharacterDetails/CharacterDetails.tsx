@@ -2,14 +2,20 @@ import { useState, useEffect } from 'react'
 import { CharactersResponse } from '../../service/characters/characters-interface'
 import { Link, useParams } from 'react-router-dom'
 import CharactersService from '../../service/characters/characters'
-import { StyledCharacterDetail } from './CharacterDetails.styles'
+import {
+  StyledCharacterDetail,
+  StyledContainer,
+} from './CharacterDetails.styles'
 import { useTranslation } from 'react-i18next'
+import LoadingButton from '../LoadingButton/LoadingButton'
+import NotFoundMessage from '../NotFoundMessage/NotFoundMessage'
 
 const charactersService = new CharactersService()
 
 const CharacterDetails = () => {
   const { characterId } = useParams<{ characterId: string }>()
   const [character, setCharacter] = useState<CharactersResponse>()
+  const [isLoading, setIsLoading] = useState(true)
 
   const { t } = useTranslation('translations')
 
@@ -19,9 +25,8 @@ const CharacterDetails = () => {
         if (!characterId) return
         const response = await charactersService.getCharacterById(characterId)
 
-        if (!response || response?.results.length === 0) return
-
         setCharacter(response)
+        setIsLoading(false)
       } catch (error) {
         console.error('Error fetching character data:', error)
       }
@@ -30,8 +35,16 @@ const CharacterDetails = () => {
     fetchCharacter()
   }, [characterId])
 
-  if (!character) {
-    return <div>Loading...</div>
+  if (isLoading) {
+    return (
+      <StyledContainer>
+        <LoadingButton />
+      </StyledContainer>
+    )
+  }
+
+  if (!character || character?.results.length === 0) {
+    return <NotFoundMessage />
   }
 
   return (
