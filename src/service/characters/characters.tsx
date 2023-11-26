@@ -1,5 +1,4 @@
 import { validateImage } from '../../commons/validation'
-import env from '../../env/env'
 import {
   ApiResponse,
   CharacterServiceInterface,
@@ -10,7 +9,7 @@ import {
 class CharactersService implements CharacterServiceInterface {
   public async getAllCharacters(paginateOptions: PaginateOptions) {
     try {
-      const response = await fetch(`${env.REACT_APP_HARRY_POTTER}characters`)
+      const response = await fetch(`https://hp-api.onrender.com/api/characters`)
       const data = await response.json()
       return buildResponse(data, paginateOptions)
     } catch (error) {
@@ -22,7 +21,7 @@ class CharactersService implements CharacterServiceInterface {
   public async getCharacterById(characterId: string) {
     try {
       const response = await fetch(
-        `${env.REACT_APP_HARRY_POTTER}character/${characterId}`,
+        `https://hp-api.onrender.com/api/character/${characterId}`,
       )
       const data = await response.json()
       return buildResponse(data)
@@ -51,7 +50,6 @@ const buildResults = (
   paginationOptions?: PaginateOptions,
 ) => {
   let currentData = data
-
   if (paginationOptions) {
     const { page, pageSize = 20 } = paginationOptions
     const startIndex = (page - 1) * pageSize

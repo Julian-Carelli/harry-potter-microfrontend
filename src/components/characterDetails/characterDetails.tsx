@@ -14,7 +14,6 @@ const CharacterDetails = () => {
     const fetchCharacter = async () => {
       try {
         if (!characterId) return
-
         const response = await charactersService.getCharacterById(characterId)
 
         if (!response || response?.results.length === 0) return
@@ -40,16 +39,20 @@ const CharacterDetails = () => {
         </Link>
       </div>
       {character.results.map((item) => (
-        <div key={item.id} className="character-info">
+        <div
+          key={item.id}
+          data-testid="character-info"
+          className="character-info"
+        >
           <h1>{item.name}</h1>
           <div>
             <img src={item.image} />
           </div>
           <div>
-            <p>Species: {item.species}</p>
-            <p>Gender: {item.gender}</p>
-            <p>House: {item.house}</p>
-            <p>Alive: {item.alive}</p>
+            <p>{item.species}</p>
+            <p>{item.gender}</p>
+            <p>{item.house}</p>
+            <p>{item.alive}</p>
           </div>
         </div>
       ))}
