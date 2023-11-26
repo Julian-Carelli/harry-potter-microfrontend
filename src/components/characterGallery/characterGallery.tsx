@@ -7,6 +7,7 @@ import {
 import CharactersService from '../../service/characters/characters'
 import ReactPaginate from 'react-paginate'
 import { StyledCharacterList } from './CharacterGallery.styles'
+import { useTranslation } from 'react-i18next'
 
 const charactersService = new CharactersService()
 
@@ -14,6 +15,8 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
   const [characters, setCharacters] = useState<Characters[]>([])
   const [paginate, setPaginate] = useState<Paginate>()
   const [currentPage, setCurrentPage] = useState(1)
+
+  const { t } = useTranslation('translations')
 
   useEffect(() => {
     const fetchData = async (currentPage: number) => {
@@ -38,7 +41,7 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
 
   return (
     <StyledCharacterList>
-      <h1>Harry Potter Characters</h1>
+      <h1>{t('components.CharacterGallery.HarryPotter.title')}</h1>
       <div className="character-container">
         {characters.map((character) => (
           <div key={character.id} className="character-card">
@@ -58,6 +61,8 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
           onPageChange={handlePageClick}
           containerClassName={'pagination'}
           activeClassName={'active'}
+          previousLabel={t('components.CharacterGallery.paginate.previous')}
+          nextLabel={t('components.CharacterGallery.paginate.next')}
         />
       )}
     </StyledCharacterList>

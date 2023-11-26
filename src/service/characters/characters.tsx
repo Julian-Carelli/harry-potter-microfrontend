@@ -6,6 +6,8 @@ import {
   PaginateOptions,
 } from './characters-interface'
 
+const allowedSpecies = ['human', 'goblin', 'owl']
+
 class CharactersService implements CharacterServiceInterface {
   public async getAllCharacters(paginateOptions: PaginateOptions) {
     try {
@@ -78,11 +80,21 @@ const mapToCharacter = (character: Characters) => {
     id: character.id,
     name: character.name,
     image: validateImage(character.image),
-    species: character.species,
-    gender: character.gender,
+    species: filterBySpecies(character.species),
+    gender: capitalizeFirstLetter(character.gender),
     house: character.house,
     alive: character.alive ? 'Alive' : 'Dead',
   }
 }
+
+const filterBySpecies = (species: string) => {
+  if (!allowedSpecies.includes(species)) {
+    return 'unknown'
+  }
+  return capitalizeFirstLetter(species)
+}
+
+const capitalizeFirstLetter = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1)
 
 export default CharactersService

@@ -3,12 +3,15 @@ import { CharactersResponse } from '../../service/characters/characters-interfac
 import { Link, useParams } from 'react-router-dom'
 import CharactersService from '../../service/characters/characters'
 import { StyledCharacterDetail } from './CharacterDetails.styles'
+import { useTranslation } from 'react-i18next'
 
 const charactersService = new CharactersService()
 
 const CharacterDetails = () => {
   const { characterId } = useParams<{ characterId: string }>()
   const [character, setCharacter] = useState<CharactersResponse>()
+
+  const { t } = useTranslation('translations')
 
   useEffect(() => {
     const fetchCharacter = async () => {
@@ -35,7 +38,7 @@ const CharacterDetails = () => {
     <StyledCharacterDetail>
       <div className="back-to-home">
         <Link to="/">
-          <button>Back to Home</button>
+          <button>{t(`components.CharacterDetails.backButton.title`)}</button>
         </Link>
       </div>
       {character.results.map((item) => (
@@ -49,10 +52,22 @@ const CharacterDetails = () => {
             <img src={item.image} />
           </div>
           <div>
-            <p>{item.species}</p>
-            <p>{item.gender}</p>
+            <p>
+              {t(
+                `components.CharacterGallery.HarryPotter.character.species.${item.species}`,
+              )}
+            </p>
             <p>{item.house}</p>
-            <p>{item.alive}</p>
+            <p>
+              {t(
+                `components.CharacterGallery.HarryPotter.character.gender.${item.gender}`,
+              )}
+            </p>
+            <p>
+              {t(
+                `components.CharacterGallery.HarryPotter.character.status.${item.alive}`,
+              )}
+            </p>
           </div>
         </div>
       ))}

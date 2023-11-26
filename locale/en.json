@@ -1,0 +1,36 @@
+{
+    "translations": { 
+        "components": {
+            "CharacterGallery": {
+                "HarryPotter": {
+                    "title": "Harry Potter Characters",
+                    "character": {
+                        "species": {
+                            "Human": "Human",
+                            "Goblin": "Goblin",
+                            "Owl": "Owl",
+                            "unknown": "unknown"
+                        },
+                        "gender": {
+                            "Male": "Male",
+                            "Female": "Female"
+                        },
+                        "status": {
+                            "Alive": "Alive",
+                            "Dead": "Dead"
+                        }
+                    }
+                },
+                "paginate": {
+                    "next": "Next",
+                    "previous": "Previous"
+                }
+            },
+            "CharacterDetails": {
+                "backButton": {
+                    "title": "Return to Home"
+                }
+            }
+        }
+    }
+}

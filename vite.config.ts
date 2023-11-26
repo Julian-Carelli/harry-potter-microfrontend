@@ -17,7 +17,14 @@ export default ({ mode }: { mode: string }) => {
           './CharacterDetails':
             './src/components/CharacterDetails/CharacterDetails.tsx',
         },
-        shared: ['react', 'react-dom', 'react-router-dom', 'styled-components'],
+        shared: [
+          'react',
+          'react-dom',
+          'react-router-dom',
+          'styled-components',
+          'react-i18next',
+          'i18next',
+        ],
       }),
     ],
     server: {
