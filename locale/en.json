@@ -1,6 +1,10 @@
 {
     "translations": { 
         "components": {
+            "pageError": {
+                "pageNotFound": "Page not found!",
+                "characterNotFound": "Character not found!"
+            },
             "CharacterGallery": {
                 "HarryPotter": {
                     "title": "Harry Potter Characters",

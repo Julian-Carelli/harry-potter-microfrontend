@@ -44,7 +44,9 @@ const CharacterDetails = () => {
   }
 
   if (!character || character?.results.length === 0) {
-    return <NotFoundMessage />
+    return (
+      <NotFoundMessage text={t('components.pageError.characterNotFound')} />
+    )
   }
 
   return (
