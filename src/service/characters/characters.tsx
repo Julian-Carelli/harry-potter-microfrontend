@@ -1,4 +1,4 @@
-import { validateImage } from '../../commons/validation'
+import { capitalizeFirstLetter, validateImage } from '../../commons/validation'
 import {
   ApiResponse,
   CharacterServiceInterface,
@@ -93,8 +93,5 @@ const filterBySpecies = (species: string) => {
   }
   return capitalizeFirstLetter(species)
 }
-
-const capitalizeFirstLetter = (str: string) =>
-  str.charAt(0).toUpperCase() + str.slice(1)
 
 export default CharactersService

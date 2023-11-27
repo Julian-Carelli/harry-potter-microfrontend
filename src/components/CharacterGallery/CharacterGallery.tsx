@@ -66,6 +66,7 @@ const CharacterGallery = ({ path = 'characters' }: { path?: string }) => {
           onPageChange={handlePageClick}
           containerClassName={'pagination'}
           activeClassName={'active'}
+          initialPage={currentPage - 1}
           previousLabel={t('components.CharacterGallery.paginate.previous')}
           nextLabel={t('components.CharacterGallery.paginate.next')}
         />
